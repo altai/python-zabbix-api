@@ -21,8 +21,13 @@ setup(
     author_email='gescheit@list.ru',
     description='Zabbix API',
     long_description=read('README'),
-    py_modules=['zabbix_api'],
+    packages=find_packages(exclude=['bin', 'tests']),
     include_package_data=True,
     zip_safe=False,
     platforms='any',
+    entry_points={
+        'console_scripts': [
+            'zabbix-client = zabbix.client:main',
+        ]
+    },
 )

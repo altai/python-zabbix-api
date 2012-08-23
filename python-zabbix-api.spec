@@ -29,9 +29,8 @@ Requires:         start-stop-daemon
 
 
 %prep
-%setup -q -n %{name}-%{version}/zabbix
-sed -i '/Creating %s/d' zabbix_api.py
-sed -i 's/sys.exit.*/raise/' zabbix_api.py
+%setup -q -n %{name}-%{version}
+
 
 %build
 %{__python} setup.py build
@@ -50,6 +49,7 @@ sed -i 's/sys.exit.*/raise/' zabbix_api.py
 %files
 %defattr(-,root,root,-)
 %doc README*
+%{_usr}/bin
 %{python_sitelib}/*
 
 %changelog
