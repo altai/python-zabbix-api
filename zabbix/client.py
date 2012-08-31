@@ -71,7 +71,8 @@ def main():
 
     try:
         json_data = json.loads(options.json[0])
-        cls, method = json_data.pop("method").split(".", 1)
+        cls, method = json_data["method"].split(".", 1)
+        params = json_data["params"]
         zapi.login(options.username, options.password)
     except Exception as e:
         die(str(e))
@@ -80,7 +81,7 @@ def main():
     except:
         die("class %s not found" % cls)
     print json.dumps(
-        getattr(obj, method)(json_data),
+        getattr(obj, method)(params),
         **({"indent": 4} if options.indent else {}))
 
 
