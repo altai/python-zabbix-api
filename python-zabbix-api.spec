@@ -18,9 +18,8 @@ Source0:          %{name}-%{version}.tar.gz
 BuildRoot:        %{_tmppath}/%{name}-%{version}-build
 BuildRequires:    python-devel python-setuptools make
 BuildArch:        noarch
-Requires:         python-flask
-Requires:         python-flask-sqlalchemy
-Requires:         python-flask-mail
+# for Python 2.6.6
+Requires:         python-argparse
 
 Requires:         start-stop-daemon
 
